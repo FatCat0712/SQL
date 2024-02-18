@@ -1,0 +1,14 @@
+* Note
+1. Nên phân tích CSDL có gì (có dàn ý) rồi hẵng code để hiệu quả hơn
+2. Quy trình thiết kế CSDL: phân tích yêu cầu -> chắt lọc( biểu diễn bằng sơ đồ ERD) -> CODE vào hệ QT CSDL thực tế ...
+
+* ERD:
+1. Thực thể: hình chữ nhật, thường là danh từ, khóa chính có gạch ngang; có thuộc tính( hình ô van)
+ - Thuộc tính không null (not null) được ký hiệu bằng oval 2 vạch
+2. MQH giữa các thực thể: hình thoi ( cũng có thuộc tính); 
+  + 1 - 1
+  + 1 - nhiều
+  + nhiều - nhiều
+-> Trong MQH nhiều - nhiều thường tách thêm thành những thực thể trung gian( hình thoi, có 2 đường)
+* Thực thể mạnh - yếu:
+   VD: Đơn hàng là thực thể mạng, chi tiết đơn hàng là thực thể yếu phụ thuộc đơn ĐƠn hàng, không tồn tại nếu không có đơn hàng
