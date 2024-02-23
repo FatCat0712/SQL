@@ -33,6 +33,9 @@ SELECT * FROM sinhvien WHERE gioiTinh = "Nữ" AND maSinhVien IN ( SELECT maSinh
 -- tìm những sinh viên học ngành tài chính mà chưa có tài khoản sinh viên
 SELECT * FROM sinhvien WHERE maChuongTrinhDaoTao = "TC" AND maSinhVien NOT IN ( SELECT maSinhVien FROM nguoidung WHERE maSinhVien IS NOT NULL);
 
+-- Tìm những giảng viên có lớp học phần ở học kỳ 2
+SELECT * FROM nhanVien WHERE viTri = "Giảng viên" AND maNhanVien IN ( SELECT maGiangVien FROM lophocphan WHERE hocKy = "học kỳ 2");
+
 
 
 
