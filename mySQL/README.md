@@ -1,1 +1,1 @@
-Leaning SQL
+Leaning mySQL
