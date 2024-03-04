@@ -115,3 +115,74 @@ INNER JOIN TotalMoney AS tm
 ON o.OrderID = tm.OrderID;
 
 -- => Sử dụng một lần truy vấn con và không bị lặp lại code
+
+
+-- Exercise
+-- Sử dụng CTE để tính tổng doanh số bán hàng cho từng sản phẩm
+-- từ hai bảng "Order Details" và "Products" trong CSDL Northwind
+WITH ProductSales AS(
+	SELECT 
+		od.ProductID, 
+		SUM(od.UnitPrice * Quantity) AS "TotalSales"
+	FROM [Order Details] AS od
+	GROUP BY od.ProductID
+)
+SELECT 
+	p.ProductID,
+	p.ProductName,
+	ps.TotalSales
+FROM Products AS p
+INNER JOIN ProductSales AS ps
+ON p.ProductID = ps.ProductID
+ORDER BY p.ProductID;
+
+-- Sử dụng CTE để tính toán tổng doanh số bán hàng theo từng
+-- khách hàng và sau đó sắp xếp danh sách theo tổng số doanh sổ
+-- giảm dần
+WITH CustomerSales AS(
+	SELECT 
+		c.CustomerID,
+		SUM(UnitPrice * Quantity) AS "TotalSales"
+	FROM Customers AS c
+	LEFT JOIN
+		Orders AS o
+		ON o.CustomerID = c.CustomerID
+	INNER JOIN
+		[Order Details] AS od
+		ON o.OrderID = od.OrderID
+	GROUP BY c.CustomerID, c.CompanyName
+)
+SELECT c.CustomerID, c.CompanyName,cs.TotalSales
+FROM 
+	Customers AS c
+INNER JOIN 
+	CustomerSales AS cs
+	ON c.CustomerID = cs.CustomerID
+ORDER BY cs.TotalSales DESC;
+
+-- sử dụng CTE tính tổng doanh số bán hàng theo năm từ bảng "Orders" và
+-- "Order Details"
+WITH OrderSales AS (
+	SELECT 
+			od.OrderID,
+			SUM(od.UnitPrice * od.Quantity) AS "TotalOrderSales"
+	FROM [Order Details] AS od
+	GROUP BY od.OrderID
+)
+,YearSales AS(
+	SELECT YEAR(o.OrderDate) AS "Year",SUM(os.TotalOrderSales) AS "TotalSales"
+	FROM Orders AS o
+	INNER JOIN OrderSales AS os
+	ON o.OrderID = os.OrderID
+	GROUP BY YEAR(o.OrderDate)
+)
+
+SELECT YEAR(o.OrderDate) AS "Year", ys.TotalSales
+FROM Orders AS o
+INNER JOIN YearSales AS ys
+ON YEAR(o.OrderDate) = ys.Year
+GROUP BY YEAR(o.OrderDate), ys.TotalSales;
+
+
+
+
