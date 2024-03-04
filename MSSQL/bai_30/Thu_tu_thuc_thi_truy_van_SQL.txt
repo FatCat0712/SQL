@@ -1,0 +1,21 @@
+Thứ tự thực thi trong câu truy vấn SQL
+
+
+ORDER		CLAUSE 			FUNCTION
+1		FROM			Choose and join tables to get base data.
+2		WHERE			Filters the base dataa.
+3		GROUP BY		Aggregates the base data.
+4 		HAVING			Filters the aggregated data.
+5		SELECT			Returns the final data.
+6		ORDER BY		Sorts the final data.
+7		LIMIT			Limits the returned data to a row count.
+
+
+
+SELECT DISTINCT 9 TOP 11 , , 8
+FROM 1
+FULL/L/R 4 OUTER JOIN 2 ON 3
+WHERE 5
+GROUP BY 6
+HAVING 7
+ORDER BY 10
