@@ -1,0 +1,35 @@
+Common Table Expression (CTE)
+-- Được sử dụng để tạo bảng tạm thời và sử dụng nó trong các truy vấn sau đó
+-- Giúp làm cho câu truy vấn trở nên dễ đọc và dễ quản lý hơn
+
+WITH tên_CTE (cột1 ,cột2 , ... ) AS (
+	-- truy vấn để định nghĩa CTE
+)
+
+-- cấu trúc của CTE
++ "WITH" là từ khóa bắt buộc để bắt đầu định nghĩa CTE
+
++ "tên_CTE" là tên bạn muốn đặt cho CTE, đây là tên mà bạn sẽ sử dụng để tham chiếu đến nó
+trong các truy vấn sau
+
++ (cột1, cột2, ...) là danh sách các cột bạn muốn định nghĩa cho CTE. Có thể không cần định danh cột nếu bạn muốn CTE chứa tất cả các cột từ kết quả của truy vấn.
+
++ "-- truy vấn để định nghĩa CTE": là phần trong dấu ngoặc đơn, nơi bạn đặt truy vấn SQL để xác định dữ liệu cho CTE. Truy vấn này có thể bao gồm các câu lệnh, SELECT, FROM, WHERE, GROUP BY, HAVING, và ORDER BY tùy theo nhu cầu của bạn.
+
+-- Lợi ích của việc sử dụng CTE
++ Giảm độ phức tạp của truy vấn SQL
+CTE cho phép bạn tạo ra các truy vấn tạm thời và sử dụng chúng như một bảng tạm trong truy vấn chính. Điều này giúp giảm độ phức tạp của câu lệnh SQL bằng cách phân tách nó thành các thành phần nhỏ hơn, dễ đọc hơn và dễ hiểu hơn. Bạn có thể sử dụng các CTE liên tiếp nhau để xử lý dữ liệu phức tạp một cách có tổ chức.
+
++ Tính tái sử dụng và khả năng mở rộng
+CTE cho phép bạn xác định các truy vấn tạm thời mà bạn có thể tái sử dụng trong nhiều truy vấn khác nhau trong cùng một truy vấn lớn. Điều này giúp giảm lặp lại mã truy vấn hoặc thêm logic mới, bạn có thể dễ dàng mở rộng CTE hiện có mà không ảnh hưởng đến các phần khác của truy vấn
+
++ Tăng hiệu suất và tối ưu hóa truy vấn
+CTE có thể giúp tăng hiệu suất của truy vấn SQL. Bằng cách tạo ra các bảng tạm thời trong bộ nhớ, CTE có thể giảm số lần truy cập đến ổ đĩa và tối ưu hóa các phép truy vấn. Ngoài ra, CTE cũng cho phép bạn sử dụng các biểu thức cùng tên trong truy vấn chính và các CTE liên quan, giúp tối ưu hóa và tái sử dụng mã truy vấn.
+
+-- Lưu ý
++ CTE thường được ưu tiên trong các truy vấn phức tạo hoặc cần tối ưu hóa hiệu suất vì nó dễ đoc và tính toán kết quả một lần
+
++ Subquery phù hợp cho các truy vấn đơn giản, hoặc khi bạn cần truy vấn DL từ một bảng dựa trên kết quả của một truy vấn khác, nhưng có thể gây hiệu suất kém hơn.
+
+
+
