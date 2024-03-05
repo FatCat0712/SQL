@@ -1,0 +1,29 @@
+Truy vấn đệ quy trong SQL
+
+Truy vấn đệ quy sử dụng CTE
+
+ * Cú pháp
+WITH CTE_name (column1, column2, ... ) AS (
+	-- phần cơ sở (Anchor member)
+	SELECT ...
+	FROM ...
+	WHERE ...
+	UNION ALL
+
+	-- phần đệ quy
+	SELECT ...
+	FROM ...
+	JOIN CTE_name ON ...
+)
+SELECT ...
+FROM CTE_name
+
+-- Khi nào cần sử dụng truy vấn đệ quy
+
++ Cây/ phân cấp dữ liệu: truy vấn đệ quy thường được sử dụng khi bạn làm vệc với kiểu dữ liệu có cấu trúc cây hoặc phân cấp, ví dụ như cây hệ thống thư mục, cấu trúc tổ chức công ty, hoặc danh sách sản phẩm có danh mục con
+
++ Duyệt đồ thị: truy vấn đệ quy cũng hữu ích khi bạn cần duyệt qua các mối quan hệ đồ thị như mối quan hệ bạn bè trong xã hội
+
++ Tìm kiếm đường đi: nếu bạn cần tìm kiếm các đường đi, ví dụ như đường đi ngắn nhất giữa hai điểm trong một mạng lưới
+
++ Tạo danh sách hoặc báo cáo có tính đệ quy: truy vấn đệ quy có thể được sử dụng để xây dựng danh sách theo các quy tắc phức tạp hoặc tạo báo cáo có cấu trúc phức tạp.
