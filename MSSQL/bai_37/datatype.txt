@@ -1,0 +1,53 @@
+Lưu ý về kiểu dữ liệu trong SQL Server
+
+- Khái niệm về kiểu dữ liệu: là một thuộc tính của một cột trong bảng, xác định loại dữ liệu mà cột đó có thể lưu trữ. Kiểu dữ liệu xác định kích thước, phạm vi và các phép toán có thể được thực hiện trên dữ liệu.
+
+* Các loại kiểu dữ liệu chính
+Kiểu dữ liệu số: lưu trữ các số nguyên, số thực và số thập phân
+
+Kiểu dữ liệu chuỗi: Lưu trữ văn bản
+
+Kiểu dữ liệu ngày và thời gian: Lưu trữ ngày, giờ và ngày giờ
+
+Kiểu dữ liệu bit: Lưu trữ các giá trị logic, chẳng hạn là TRUE hoặc FALSE
+
+
+* Sự khác biệt giữa Char và Varchar
+
++ Char là kiểu dữ liệu chuỗi có độ dài cố định. Điều này có nghĩa là tất cả các giá trị được lưu trữ trong cột char sẽ có cùng độ dài. Độ dài của cột char được xác định bởi giá trị n trong cú pháp CHAR(n).
+
++ Varchar là kiểu dữ liệu chuỗi có độ dài biến đổi. Điều này có nghĩa là các giá trị lưu trữ trong cột varchar có thể có độ dài khác nhau. Độ dài tối đa của cột varchar được xác định bởi giá trị n trong cú pháp VARCHAR(n).
+
+_ Varchar luôn thêm 1 byte cho thông tin của dữ liệu bất kể dữ liệu có rỗng hay ko
+_ Char sẽ thêm vào khoảng trắng vào dữ liệu để đủ số lượng ký tự MAX nếu dữ liệu có số lượng ký tự ít hơn số lượng ký tự khai báo khi tạo bảng
+
+Đặc điểm 		CHAR			VARCHAR
+	
+Độ dài			Cố định			Biến đổi
+
+Kích thước 		Lớn hơn			Nhỏ hơn
+
+Dung lượng		Tốn nhiều dung lượng	Tốn ít dung lượng hơn
+			hơn
+			
+Hiệu suất		Thấp hơn 		Cao hơn
+
+* Tradeoff (đánh đổi)
+
+_ Đánh đổi thứ nhất : VARCHAR lưu chuỗi theo độ dài của chính nó (variable-length), chứ không thêm các khoảng trắng vào cuối như CHAR (fixed-length). Vì vậy, đối với những cột thường xuyên có sự khác nhau giữa độ dài của các dòng trong bảng, thì lưu trữ theo kiểu VARCHAR sẽ tối ưu hơn, tốn ít dùng lượng lưu trữ hơn.
+
+_ Đánh đổi thứ hai: Nhờ việc fix cứng chiều dài của mình, các thao tác chuỗi với kiểu dữ liệu CHAR sẽ nhanh hơn VARCHAR, vì các thao tác với chuỗi sẽ phải có thêm việc check length nếu bạn sử dụng VARCHAR. Ví dụ với việc đánh INDEX, trung bình việc tìm kiếm dữ liệu với INDEX của cột CHAR sẽ nhanh hơn 20% so với cột VARCHAR.
+
+Ví dụ:
+dùng kiểu dữ liệu CHAR cho thuộc tính SĐT của khách hàng ở Việt Nam, sau đó đánh INDEX cho cột SĐT => truy xuất nhanh hơn
+
+SELECT *
+FROM 		=> thực tế rất chậm
+WHERE
+
+hình ảnh => encode to base64 => TEXT => lưu vào database
+For more:
+https://www.w3schools.com/sql/sql_datatypes.asp
+
+
+
