@@ -2,7 +2,8 @@ Phân biệt các nhóm lệnh SQL
 
 SQL là gì ?
 
-(Structured Query Language) là một ngôn ngữ lập trình được sử dụng để thao tác với dữ liệu trong cơ sở dữ liệu quan hệ. SQL được sử dụng để tạo, truy vấn, thay đổi và xóa dữ liệu trong cơ sở dữ liệu.
+(Structured Query Language) là một ngôn ngữ lập trình được sử dụng để thao tác với dữ liệu trong cơ sở dữ liệu quan hệ. 
+SQL được sử dụng để tạo, truy vấn, thay đổi và xóa dữ liệu trong cơ sở dữ liệu.
 
 * Bốn nhóm lệnh chính trong SQL, bao gồm:
 + DML ( Data Manipulation Language): được sử dụng để thao tác với dữ liệu trong CSDL, bao gồm các câu lệnh chèn, cập nhật, xóa và truy vấn.
@@ -13,7 +14,8 @@ SQL là gì ?
 	- SELECT: truy vấn dữ liệu từ một hoặc nhiều bảng
 
 
-+ DDL (Data Definition Language): được sử dụng để định nghĩa cấu trúc của cơ sở dữ liệu, bao gồm các bảng, cột, chỉ mục và ràng buộc. Các câu lệnh DDL thường được sử dụng khi tạo CSDL mới hoặc khi thay đổi cấu trúc của CSDL hiện có
++ DDL (Data Definition Language): được sử dụng để định nghĩa cấu trúc của cơ sở dữ liệu, bao gồm các bảng, cột, chỉ mục và ràng buộc. 
+Các câu lệnh DDL thường được sử dụng khi tạo CSDL mới hoặc khi thay đổi cấu trúc của CSDL hiện có
 	
 	- CREATE TABLE: tạo một bảng mới
 	- ALTER TABLE: thêm, xóa hoặc sửa đổi các cột trong bảng
