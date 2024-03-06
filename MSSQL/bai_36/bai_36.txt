@@ -1,0 +1,72 @@
+Cú pháp tạo TABLE mới
+
+CREATE TABLE [tên bảng] (
+[tên cột] [kiểu dữ liệu] [khóa chính] [khóa ngoại] [số lượng ký tự] [null] [kiểu ràng buộc],
+[tên cột] [kiểu dữ liệu] [khóa chính] [khóa ngoại] [số lượng ký tự] [null] [kiểu ràng buộc],
+...
+)
+
+* Trong đó 
++ Tên bảng : tên của bảng mới được tạo.
++ Tên cột : tên của cột trong bảng.
++ Kiểu dữ liệu: kiểu dữ liệu của cột.
++ Khóa chính : cột được chọn làm khóa chính của bảng.
++ Khóa ngoại : cột tham chiếu đến khóa chính của bảng khác.
++ Số lượng ký tự : số lượng ký tự tối đa của cột.
++ Null : giá trị của cột có thể là Null hay không
++ kiểu ràng buộc: ràng buộc áp dụng cho cột.
+
+-- Lưu ý khi tạo TABLE
++ Tên bảng phải bắt đầu bằng một ký tự chữ cái và không được chứa các ký tự đặc biệt.
+
++ Tên cột phải bắt đầu bằng một ký tự chữ cái hoặc số và không được chứa các ký tự đặc biệt.
+
++ Kiểu dữ liệu của cột phải được xác định rõ ràng.
+
++ Khóa chính của bảng phải là duy nhất.
+
++ Khóa ngoại của bảng phải tham chiếu đến khóa chính của một bảng khác.
+
+* CONSTRAINTS - Các lệnh bổ sung khi tạo bảng
++ IDENTITY : tạo cột tự tăng.
+
++ IDENTITY(seed, increment): tạo cột tự tăng với giá trị seed và increment
+
++ DEFAULT: thiết lập giá trị mặc định cho cột.
+
++ CHECK: thiết lập ràng buộc kiểm tra cho cột.
+
++ UNIQUE: thiết lập ràng buộc duy nhất cho cột.
+
+* Cú pháp thay đổi cấu trúc TABLE
+ALTER TABLE [tên bảng]
+[thêm | sửa đổi] [tên cột]
+[kiểu dữ liệu] [khóa chính] [khóa ngoại] [số lượng ký tự] [null] [kiểu ràng buộc]
+
+- Các dạng thay đổi chính
+ALTER TABLE table_name
+ADD column_name datatype;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE table_name
+RENAME COLUMN old_name TO new_name;
+
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
+
+* Cú pháp xóa TABLE
+
+-- Xóa tất cả dữ liệu trong bảng, nhưng không xóa cấu trúc của bảng
+TRUNCATE TABLE [tên bảng];
+
+-- Xóa hoàn toàn bảng, bao gồm cấu trúc và dữ liệu
+DROP TABLE [tên bảng];
+
+--liệt kê tất cả các bảng trong database 
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+
+
+
+

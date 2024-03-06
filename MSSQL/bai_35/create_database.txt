@@ -1,0 +1,3 @@
+tạo mới CSDL trong SQL
+Cú pháp
+CREATE DATABASE <database_name>;
