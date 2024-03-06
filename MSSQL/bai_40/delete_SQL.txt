@@ -1,0 +1,43 @@
+DELETE -- Xóa dữ liệu trong bảng
+* Cú pháp
+DELETE FROM table_name WHERE condition;
+- Nếu không có mệnh đề WHERE thì DELETE sẽ xóa toàn bộ bảng
+
+-- Lưu ý 
++ Sử dụng SELECT INTO để tạo ra bảng tạm thời trước khi thực hành câu lệnh DELETE
+(trong quá trình testing,fixing)
+
+So sánh DELETE và TRUNCATE
++ DELETE: 					 TRUNCATE
+khi chạy lệnh DELETE thì 		Đối với TRUNCATE chúng ta chỉ có thể dùng
+SQL sẽ log từng dòng đã			cho bảng. Khi chạy lệnh TRUNCATE thì SQL 					sẽ 
+xóa vào TRANSACTION LOG, 		xóa hết dữ liệu của bảng và reset	
+vì thế nên khi bạn tạo 			TRANSACTION LOG, vì thế khi tạo một giá 
+record mới, giá trị của id 		trị mới của id sẽ bắt đầu từ 1
+sẽ không bắt đầu từ 1 mà 
+sẽ có giá trị n + 1 với 
+n là giá trị của record
+cuối cùng được tạo
+
+-- Lưu ý 
+TRUNCATE không thể chạy được khi bảng muốn xóa có FOREIGN KEY cấu hình RESTRICT hoặc NO ACTION (nếu bảng đó có FOREIGN KEY trỏ đến chính nó thì có thể xóa bình thường) 
+
+-- Dữ liệu bị xóa bởi DELETE có thể restored được còn TRUNCATE Thì không
+
+-- Tình huống không thể xóa dữ liệu
+
++ Các ràng buộc duy nhất hoặc ràng buộc kiểm tra( CHECK constraint)
+
++ Quyền truy cập (Permissions)
+
++ Trong trạng thái giao dịch (Transaction)
+
++ Có triggers hoặc quy tắc (triggers or rules)
+
++ Làm thay đổi dữ liệu liên quan đến tính toán (computed data)
+
++ Làm thay đổi dữ liệu liên quan đến ghi lại sự kiện (auditing)
+
+
+
+
