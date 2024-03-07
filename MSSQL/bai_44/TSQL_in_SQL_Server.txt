@@ -1,0 +1,58 @@
+T-SQL (Transact-SQL)
+
+Ngôn ngữ truy vấn mở rộng của SQL
+
+T-SQL là gì ?
+Transact-SQL là cú pháp ngôn ngữ lập trình mở rộng của ngôn ngữ SQL gồm có các tính năng được Sybase và Microsoft bổ sung cho SQL. Chẳng hạn như kiểm soát giao dịch, xử lý lỗi và các biến được khai báo.
+
+So sánh SQL và T-SQL
+
+Tiêu chí		SQL 			T-SQL
+
+Đối tượng	Chuẩn SQl, có thể sử dụng	Dành riêng cho SQL Server, không
+		trên nhiều hệ thống quản lý	tương thích với các hệ thống quản
+		CSDL				lý CSDL khác.
+
+Cú pháp		Cú pháp cơ bản và chuẩn.	Bổ sung cú pháp riêng biệt cho các						tính năng mở rộng như khai báo biến						Stored Procedures, Triggers và nhiều						chức năng nâng cao
+
+Tính năng	Cung cấp các câu lệnh cơ bản	Bao gồm các tính năng cơ bản và nhiều
+cơ bản		như SELECT, INSERT, UPDATE,	tính năng mở rộng như Error Handling
+		DELETE để truy vấn và thay đổi	(xử lý lỗi), Transactions (giao dịch)
+		dữ liệu.			Views và nhiều chức năng mạnh mẽ khác
+
+Khả năng mở	Có thể sử dụng trên nhiều hệ 	Chủ yếu được sử dụng cho SQL Server
+rộng		thống quản lý CSDL khác nhau	và không tương thích hoàn toàn với
+						các hệ thống quản lý cơ sở dữ liệu 						khác.
+
+Ví dụ
+
+-- khai báo biến
+DECLARE @CustomerName NVARCHAR(50)
+DECLARE @OrderTotal MONEY
+
+-- Gán giá trị cho biến
+SET @CustomerName = 'John Doe'
+SET @OrderTotal = 100.50
+
+-- Sử dụng biến trong truy vấn
+SELECT *
+FROM Orders
+WHERE CustomerName = @CustomerName
+
+-- Sử dụng biến trong Stored Procedure
+CREATE PROCEDURE GetOrdersByTotal
+	@MinTotal Money
+AS
+BEGIN
+	SELECT *
+	FROM Orders
+	WHERE OrderTotal >= @MinTotal
+END
+
+-- Gọi Stored Procedure và truyền biến
+EXEC GetOrdersByTotal @MinTotal = @OrderTotal
+
+Các ngôn ngữ mở rộng của hệ QT CSDL khác
+PL/SQL là ngôn ngữ hướng thủ tục độc quyền Oracle 
+PL/pgSQL là ngôn ngữ hướng thủ tục được sử dụng bởi PostgreSQL
+
