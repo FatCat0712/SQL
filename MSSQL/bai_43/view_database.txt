@@ -1,0 +1,63 @@
+View trong Database
+
+View là gì ?
+
+Database view là sự trình bày data theo ý muốn được trích xuất từ một hoặc nhiều table/view khách. View không lưu data nên nó còn được biết đến với cái tên "Bảng ảo (virtual tables)"
+
+Vì view lấy dữ liệu từ các Table của CSDL nên khi DL bên trong các Table thay đổi thì khi thực hiện mở lại các View dữ liệu cũng sẽ thay đổi theo. Cho nên sau khi cập nhật dữ liệu mới cho các table thì chỉ cần mở lại View và các bạn sẽ có được những bản ghi mới nhất.
+
+* Cú pháp 
+CREATE  [OR ALTER] VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+* View không giúp tăng về hiệu suất chỉ giúp đơn giản hóa các truy vấn phức tạp
+
+CHECK OPTION
+là một điều kiện trong View cho phép bạn xác định ràng buộc về việc cập nhật hoặc chèn dữ liệu vào View. Nó đảm bảo rằng các dòng dữ liệu được chèn hoặc cập nhật thông qua View sẽ tuân theo một điều kiện cụ thể.
+
+Updatable view
+
+Một View có thể được cấu hình để cho phép cập nhật nếu nó được tạo dựa trên một bảng CSDL và tuân theo một số yêu cầu. Điều này bao gồm:
+
++ View phải được tạo bằng cách sử dụng SELECT, không được chứa phép toán SET, UNION, DISTINCT hoặc GROUP BY phức tạp.
++ View không được chứa các cột tính toán (computed columns).
++ View phải có đủ các trường cần thiết để cập nhật ( ví dụ: PRIMARY KEY)
+
+Read only view
+
+Cách chặn UPDATE/DELETE/INSERT với VIEW
++ Cách 1: Phân quyền USER
++ Cách 2: Làm cho việc update data qua view luôn vi phạm 1 trong những điều kiện
+
+Ví dụ 1
+CREATE VIEW employee_view_read_only
+AS SELECT E.EmployeeNo, E.EmployeeName, E.DepartmentNo
+FROM Employee E
+UNION ALL
+SELECT NULL, NULL, NULL
+
+* Ưu điểm của View
+
++ View giúp đơn giản hóa những query phức tạp: trong trường hợp cần truy xuất dữ liệu từ nhiều table với logic phức tạo. Lúc này ta có thể tạo view với logic tương tự và thông qua view chúng ta sẽ chỉ cần sử dụng những câu query đơn giản để truy xuất dữ liệu.
+
++ Giới hạn data có thể truy cập với nhóm người dùng được chỉ định: Đôi khi ta không muốn những dữ liệu nhạy cảm được truy cập bởi nhóm user nào đó. View có thể giúp chúng ta giới hạn row/column của những table theo điều kiện ta muốn lấy
+
++ View cung cấp thêm 1 lớp bảo mật cho database: có những dữ liệu mà một nhóm người dùng có thể truy cập nhưng lại không muốn họ có thể thao tác những thay đổi. Option VIEW READ ONLY sẽ giải quyết được vấn đề này
+
++ Cung cấp khả năng tương thích khi thay đổi cấu trúc dữ liệu.
+
+* Nhược điểm:
+ 
++ Performance: vì bản chất không lưu dữ liệu nên tất cả những thao tác được thực hiện trên view thì đều được phản đến base table. Do đó query processor phải translate view thành query đến base nên hiệu năng truy xuất dữ liệu có thể giảm nếu view phức tạp được từ nhiều table hoặc view được tạo từ view khác.
+
++ Phụ thuộc vào base table: Mỗi khi base table có sự thay đổi cấu trúc điều đó khiến view trở thành invalid.
+
+
+
+
+
+
+
+
