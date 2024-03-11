@@ -28,9 +28,12 @@ END;
 
 * Các lớp trigger trong SQL Server
 
-+ DDL Trigger: DDL là viết tắt của cụm Data Definition Language. DDL trigger sẽ kích hoạt khi những sự kiện bị thay đổi cấu trúc như việc tạo, sửa đổi, bỏ bảng. Cũng có thể xuất hiện trong những sự kiện liên quan tới server (sửa đổi bảo mật, cập nhật thống kê).
++ DDL Trigger: DDL là viết tắt của cụm Data Definition Language. 
+DDL trigger sẽ kích hoạt khi những sự kiện bị thay đổi cấu trúc như việc tạo, sửa đổi, bỏ bảng. 
+Cũng có thể xuất hiện trong những sự kiện liên quan tới server (sửa đổi bảo mật, cập nhật thống kê).
 
-+ DML Trigger: DML là viết tắt của cụm từ Data Modification Language. DML trigger là một loại trigger phổ biến và được sử dụng nhiều nhất hiện nay. Lúc này, việc kích hoạt chính là câu lệnh sửa đổi dữ liệu. 
++ DML Trigger: DML là viết tắt của cụm từ Data Modification Language. DML trigger là một loại trigger phổ biến và được sử dụng nhiều nhất hiện nay. 
+Lúc này, việc kích hoạt chính là câu lệnh sửa đổi dữ liệu. 
 Đó có thể là một câu lệnh chèn vào bảng, cập nhật bảng hoặc xóa bảng.
 
 * Lưu ý
